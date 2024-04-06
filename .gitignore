@@ -11,4 +11,5 @@ build/*
 dump.txt
 log.txt
 minicom.cap
+configure~
 
