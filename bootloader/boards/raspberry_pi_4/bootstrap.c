@@ -124,14 +124,13 @@ void bootstrap_kernel(vm_addr kernel_ceiling)
 
   boot_log_info("enable paging...");
 
-
-
+  // FIXME: Set SMPEN in CPUECTLR when we support SMP.
   hal_set_ttbcr(0);
-  hal_set_dacr(0x01);  // FIXME: Set all domains with 0x55555555
+  hal_set_dacr(0x55555555);
   hal_set_ttbr0((uint32_t)root_pagedir);
 
   sctlr = hal_get_sctlr();
-  sctlr |= SCTLR_M | SCTLR_C | SCTLR_I;    
+  sctlr |= SCTLR_M | SCTLR_C | SCTLR_I | SCTLR_Z;
   hal_set_sctlr(sctlr);
   hal_dsb();
   hal_isb();
@@ -171,6 +170,8 @@ void init_page_directory(void)
 /*
  * Initialise the page table entries to map phyiscal memory from 0 to 512MB
  * into the kernel starting at 0x80000000.
+ *
+ * FIXME: Add L2_B to pa_bits?
  */
 void init_kernel_pagetables(void)
 {
@@ -178,7 +179,7 @@ void init_kernel_pagetables(void)
   vm_addr pa;
 
   pa_bits = L2_TYPE_S | L2_AP_RWK;
-	//  pa_bits |= L2_B | L2_C;			// FIXME
+	pa_bits |=  L2_C;
 
   for (pa = 0; pa < bootinfo.mem_size; pa += PAGE_SIZE) {
     kernel_pagetables[pa / PAGE_SIZE] = pa | pa_bits;
@@ -219,8 +220,6 @@ void init_bootloader_pagetables(void)
     pte_idx = (pa & L2_ADDR_BITS) >> L2_IDX_SHIFT;
 
     pa_bits = L2_TYPE_S | L2_AP_RWKU;
-    // pa_bits |= L2_B | L2_C;   // FIXME:
-    
     pt[pte_idx] = pa | pa_bits;
   }  
 }
@@ -285,8 +284,7 @@ void *io_map(vm_addr pa, size_t sz)
   va_base = ALIGN_UP(io_map_current, PAGE_SIZE);
   va_ceiling = va_base + (pa_ceiling - pa_base);
 
-  pa_bits = L2_TYPE_S | L2_AP_RWK;    // read/write kernel-only
-  // pa_bits |= ;   TODO:  Do we need to set any bits cache/bufferable for i/o pages?
+  pa_bits = L2_TYPE_S | L2_AP_RWK;    // read/write kernel-only, not cacheable
 
   for (va = va_base, pa = pa_base; pa < pa_ceiling; va+= PAGE_SIZE, pa += PAGE_SIZE) {
 	  pte_idx = (va - io_map_base) / PAGE_SIZE;
