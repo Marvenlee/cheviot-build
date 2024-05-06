@@ -124,7 +124,18 @@ void bootstrap_kernel(vm_addr kernel_ceiling)
 
   boot_log_info("enable paging...");
 
-  // FIXME: Set SMPEN in CPUECTLR when we support SMP.
+#if 0  
+  // Pi 2 ? Pi 3
+  uint32_t actlr = hal_get_actlr();
+  actlr |= ACTLR_FW;
+  hal_set_actlr(actlr);
+#else
+  // Pi 4   
+//  uint32_t cpuectlr = hal_get_cpuectlr();
+//  cpuectlr |= CPUECTLR_SMPEN;
+//  hal_set_cpuectlr(cpuectlr);
+#endif
+  
   hal_set_ttbcr(0);
   hal_set_dacr(0x55555555);
   hal_set_ttbr0((uint32_t)root_pagedir);
@@ -168,10 +179,9 @@ void init_page_directory(void)
 
 
 /*
- * Initialise the page table entries to map phyiscal memory from 0 to 512MB
- * into the kernel starting at 0x80000000.
- *
- * FIXME: Add L2_B to pa_bits?
+ * Initialise the page table entries to map phyiscal memory into the kernel
+ * starting at 0x80000000. Note that bootinfo.mem_size is limited to allow
+ * a number of pages for mapping of interrupt and timer peripherals.
  */
 void init_kernel_pagetables(void)
 {
@@ -179,7 +189,7 @@ void init_kernel_pagetables(void)
   vm_addr pa;
 
   pa_bits = L2_TYPE_S | L2_AP_RWK;
-	pa_bits |=  L2_C;
+	pa_bits |=  L2_C;  // FIXME: | L2_B | L2_S; 
 
   for (pa = 0; pa < bootinfo.mem_size; pa += PAGE_SIZE) {
     kernel_pagetables[pa / PAGE_SIZE] = pa | pa_bits;
