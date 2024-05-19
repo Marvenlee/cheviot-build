@@ -598,7 +598,8 @@ install-data-local:
 	install -o 0 -g 0 -m 0755 -d $(prefix)/var/log
 	install -o 0 -g 0 -m 0755 -t $(prefix)/etc \
 														    $(srcdir)/root/etc/profile \
-														    $(srcdir)/root/etc/termcap
+														    $(srcdir)/root/etc/startup.cfg \
+	                              $(srcdir)/root/etc/termcap
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
