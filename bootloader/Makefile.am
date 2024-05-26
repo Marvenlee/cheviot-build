@@ -22,7 +22,7 @@ bootload_SOURCES += boards/raspberry_pi_1/aux_uart.c \
 bootload_LDADD = -lrpimailbox -lrpihal
 
 AM_CFLAGS = -O2 -std=c99 -g0
-AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_1 -DBOARD_RASPBERRY_PI_1
+AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_1 -DBOARD_RASPBERRY_PI_1 -DNDEBUG
 AM_CCASFLAGS = -r -I$(srcdir)/boards/raspberry_pi_1 -DBOARD_RASPBERRY_PI_1
 
 bootload_LDFLAGS = -v \
@@ -43,7 +43,7 @@ bootload_SOURCES += boards/raspberry_pi_4/aux_uart.c \
 bootload_LDADD = -lrpimailbox -lrpihal
 
 AM_CFLAGS = -march=armv7ve -O0 -std=c99 -g2
-AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_4 -DBOARD_RASPBERRY_PI_4
+AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_4 -DBOARD_RASPBERRY_PI_4 -DNDEBUG
 AM_CCASFLAGS = -march=armv7ve -r -I$(srcdir)/boards/raspberry_pi_4 -DBOARD_RASPBERRY_PI_4
 
 bootload_LDFLAGS = -v \

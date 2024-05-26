@@ -61,22 +61,32 @@ void boot_debug_write_string(char *string);
  */
 #if defined(LOG_LEVEL_ERROR)
 #define boot_log_error(fmt, args...)   boot_debug_printf(fmt, ##args)
+#else 
+#define boot_log_error(fmt, args...)
 #endif
 
 #if defined(LOG_LEVEL_WARN)
 #define boot_log_warn(fmt, args...)    boot_debug_printf(fmt, ##args)
+#else 
+#define boot_log_warn(fmt, args...)
 #endif
 
 #if defined(LOG_LEVEL_INFO)
 #define boot_log_info(fmt, args...)    boot_debug_printf(fmt, ##args)
+#else 
+#define boot_log_info(fmt, args...)
 #endif
 
 #if defined(LOG_LEVEL_DEBUG)
 #define boot_log_debug(fmt, args...)   boot_debug_printf(fmt, ##args)
+#else 
+#define boot_log_debug(fmt, args...)
 #endif
 
 #if defined(LOG_LEVEL_TRACE)
 #define boot_log_trace(fmt, args...)   boot_debug_printf(fmt, ##args)
+#else 
+#define boot_log_trace(fmt, args...)
 #endif
 
 #else
