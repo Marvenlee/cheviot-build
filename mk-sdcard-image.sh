@@ -28,12 +28,25 @@
 # Parameters that can be changed to build the image
 img=sdimage.img
 block_size=512
-partition_size_1_megs=16
-partition_size_2_megs=128
 partition_file_1=part1_boot.fat
 partition_file_2=part2_root.ext2
 boot_dir=build/boot_partition
 root_dir=build/host
+
+# Get the boot partition size from environment variable or default to 16MB
+if [[ -z "${BOOT_PARTITION_SIZE_MB}" ]]; then
+  partition_size_1_megs=16
+else
+  partition_size_1_megs=${BOOT_PARTITION_SIZE_MB}
+fi
+
+# Get the root partition size from environment variable or default to 128MB
+if [[ -z "${ROOT_PARTITION_SIZE_MB}" ]]; then
+  partition_size_2_megs=128
+else
+  partition_size_2_megs=${ROOT_PARTITION_SIZE_MB}
+fi
+
 
 # Calculate partition sizes in bytes
 partition_size_1=$(($partition_size_1_megs * 1048576))
