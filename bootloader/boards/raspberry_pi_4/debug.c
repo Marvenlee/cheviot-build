@@ -8,7 +8,7 @@
 #include <machine/cheviot_hal.h>
 #include "debug.h"
 #include "globals.h"
-
+#include "aux_uart.h"
 
 #define KLOG_WIDTH 80
 static char klog_entry[KLOG_WIDTH];

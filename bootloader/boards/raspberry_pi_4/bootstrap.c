@@ -15,7 +15,6 @@
  */
 
 #include <machine/cheviot_hal.h>
-#include <string.h>
 #include "bootstrap.h"
 #include "bootinfo.h"
 #include "debug.h"
@@ -24,6 +23,15 @@
 #include "debug.h"
 #include "gpio.h"
 #include "peripheral_base.h"
+
+// Prototypes (not picked up in string.h)
+void *	 memchr (const void *, int, size_t);
+int 	   memcmp (const void *, const void *, size_t);
+void *	 memcpy (void *__restrict, const void *__restrict, size_t);
+void *	 memmove (void *, const void *, size_t);
+void *	 memset (void *, int, size_t);
+char 	*strcpy (char *__restrict, const char *__restrict);
+size_t	 strlen (const char *);
 
 // Macros for address alignment. TODO: Replace with libc roundup and rounddown
 #define ALIGN_UP(val, alignment)                                               \

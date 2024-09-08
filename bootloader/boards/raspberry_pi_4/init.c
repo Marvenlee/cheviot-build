@@ -21,6 +21,16 @@
 #include "peripheral_base.h"
 #include "globals.h"
 
+// Prototypes (not picked up in string.h)
+void *	 memchr (const void *, int, size_t);
+int 	   memcmp (const void *, const void *, size_t);
+void *	 memcpy (void *__restrict, const void *__restrict, size_t);
+void *	 memmove (void *, const void *, size_t);
+void *	 memset (void *, int, size_t);
+char 	*strcpy (char *__restrict, const char *__restrict);
+size_t	 strlen (const char *);
+
+
 // Mailbox memory
 static uint32_t mailbuffer[64] __attribute__((aligned(16)));
 
@@ -124,7 +134,7 @@ int boot_rpi_mailbox(uint32_t tag, void *request, int req_sz, void *response, in
   mailbuffer[5 + req_sz/4] = 0;		// end tag
 
   do {
-    hal_mbox_write(MBOX_PROP, mailbuffer);
+    hal_mbox_write(MBOX_PROP, (uint32_t)mailbuffer);
     result = hal_mbox_read(MBOX_PROP);
   } while (result == 0);
 
@@ -221,13 +231,13 @@ void parse_revision(void)
 			bootinfo.mem_size = 1024 * 1024 * 1024;
 			break;
 		case 3:  // 2gb
-			bootinfo.mem_size = 2048 * 1024 * 1024;
+			bootinfo.mem_size = 2048 * 1024 * 1024ull;
 			break;
 		case 4:  // 4gb
-			bootinfo.mem_size = 4096 * 1024 * 1024;
+			bootinfo.mem_size = 4096 * 1024 * 1024ull;
 			break;
 		case 5:  // 8gb
-			bootinfo.mem_size = 8192 * 1024 * 1024;
+			bootinfo.mem_size = 8192 * 1024 * 1024ull;
 			break;
 		default:
 			boot_log_info("unknown memory size, assuming 128MB");
@@ -241,6 +251,7 @@ void parse_revision(void)
 		boot_log_info("Limiting system memory to 2GB (-1MB)");
 		bootinfo.mem_size = 0x7FF00000;
 	}
+	
 	
 	cpu_type = (revision >> 12) & 0x0F;
 	
