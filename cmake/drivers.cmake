@@ -10,7 +10,7 @@ ExternalProject_Add (
 	                    --prefix=${CMAKE_CURRENT_BINARY_DIR}/build/host	
 	BUILD_ALWAYS      ON
 	INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/host
-	DEPENDS           newlib hal libtask libs 
+	DEPENDS           newlib hal libtask dtc libs 
 	BUILD_COMMAND     make
 	INSTALL_COMMAND   pseudo make install
 )

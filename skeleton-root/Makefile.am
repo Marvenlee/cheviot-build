@@ -17,6 +17,8 @@ install-data-local:
 	install -o 0 -g 0 -m 0755 -d $(prefix)/etc/opt
 	install -o 0 -g 0 -m 0755 -d $(prefix)/home
 	install -o 0 -g 0 -m 0755 -d $(prefix)/lib
+	install -o 0 -g 0 -m 0755 -d $(prefix)/lib/firmware
+	install -o 0 -g 0 -m 0755 -d $(prefix)/lib/firmware/dt
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media/root
 	install -o 0 -g 0 -m 0755 -d $(prefix)/mnt
@@ -30,12 +32,14 @@ install-data-local:
 	install -o 0 -g 0 -m 0755 -d $(prefix)/usr/sbin
 	install -o 0 -g 0 -m 0755 -d $(prefix)/var
 	install -o 0 -g 0 -m 0755 -d $(prefix)/var/log
-	install -o 0 -g 0 -m 0755 -t $(prefix)/etc \
-														    $(srcdir)/root/etc/profile \
-														    $(srcdir)/root/etc/startup.cfg \
-	                              $(srcdir)/root/etc/termcap
+	install -o 0 -g 0 -m 0755 -d $(prefix)/etc
+	install -o 0 -g 0 -m 0755 -t $(prefix)/lib/firmware/dt/ \
+					$(srcdir)/root/lib/firmware/dt/rpi4.dtb
+	install -o 0 -g 0 -m 0755 -t $(prefix)/etc/ \
+					$(srcdir)/root/etc/profile \
+					$(srcdir)/root/etc/startup.cfg \
+					$(srcdir)/root/etc/termcap
 															
-
 
 
 

@@ -30,6 +30,7 @@ mkdir -p build/$KERNEL_IFS_DIR/media/root
 mkdir -p build/$KERNEL_IFS_DIR/root
 mkdir -p build/$KERNEL_IFS_DIR/sbin
 mkdir -p build/$KERNEL_IFS_DIR/etc
+mkdir -p build/$KERNEL_IFS_DIR/lib/firmware/dt
 
 cp build/host/boot/sbin/kernel      build/$KERNEL_IFS_DIR/boot/
 cp build/host/sbin/init             build/$KERNEL_IFS_DIR/sbin/
@@ -39,6 +40,7 @@ cp build/host/sbin/extfs            build/$KERNEL_IFS_DIR/sbin/
 cp build/host/sbin/ifs              build/$KERNEL_IFS_DIR/sbin/
 cp build/host/sbin/devfs            build/$KERNEL_IFS_DIR/sbin/
 cp build/host/etc/startup.cfg       build/$KERNEL_IFS_DIR/etc/
+cp build/host/lib/firmware/dt/rpi4.dtb       build/$KERNEL_IFS_DIR/lib/firmware/dt
 	
 arm-none-eabi-objcopy build/host/sbin/bootload -O binary output/bootload.img
 
