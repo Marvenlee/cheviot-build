@@ -28,10 +28,11 @@ struct bcm2711_aux_registers *aux_regs;
 void init_aux_uart(void)
 {
   uint32_t baud = 115200;
+
   hal_mmio_write(&aux_regs->enables, 1);
   hal_mmio_write(&aux_regs->mu_ier_reg, 0);
   hal_mmio_write(&aux_regs->mu_cntl_reg, 0);
-  hal_mmio_write(&aux_regs->mu_lcr_reg, 3);
+  hal_mmio_write(&aux_regs->mu_lcr_reg, 3);     // 0x03 = 8-bit mode
   hal_mmio_write(&aux_regs->mu_mcr_reg, 0);
   hal_mmio_write(&aux_regs->mu_ier_reg, 0);
   hal_mmio_write(&aux_regs->mu_iir_reg, 0xC6);
@@ -40,9 +41,6 @@ void init_aux_uart(void)
   // GPIO pins 14 and 15 must be configured as alternate function FN5 for Aux UART 
   configure_gpio(14, AUX_UART_GPIO_ALT_FN, PULL_NONE);
   configure_gpio(15, AUX_UART_GPIO_ALT_FN, PULL_NONE);
-
-//  gpio_useAsAlt5(14);
-//  gpio_useAsAlt5(15);
 
   hal_mmio_write(&aux_regs->mu_cntl_reg, 3);   //enable RX/TX
 }

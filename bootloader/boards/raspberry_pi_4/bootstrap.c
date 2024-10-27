@@ -68,6 +68,8 @@ void *io_map(vm_addr pa, size_t sz);
  *
  * IO memory for screen, timer, interrupt and gpios are mapped at 0xA0000000.
  * Bootloader and loaded modules are identity mapped from 4k upto 478k.
+ *
+ * TODO: Handle framebuffer memory region (map as write combine?).
  */
 void bootstrap_kernel(vm_addr kernel_ceiling)
 {
@@ -146,7 +148,19 @@ void bootstrap_kernel(vm_addr kernel_ceiling)
   
   hal_set_ttbcr(0);
   hal_set_dacr(0x55555555);
+
+  hal_dsb();
+  hal_isb();
+
   hal_set_ttbr0((uint32_t)root_pagedir);
+
+  hal_isb();
+  hal_invalidate_tlb();
+  hal_invalidate_branch();
+  hal_invalidate_icache();
+
+  hal_dsb();
+  hal_isb();
 
   sctlr = hal_get_sctlr();
   sctlr |= SCTLR_M | SCTLR_C | SCTLR_I | SCTLR_Z;
@@ -190,6 +204,8 @@ void init_page_directory(void)
  * Initialise the page table entries to map phyiscal memory into the kernel
  * starting at 0x80000000. Note that bootinfo.mem_size is limited to allow
  * a number of pages for mapping of interrupt and timer peripherals.
+ *
+ * TODO: Handle framebuffer memory region (map as write combine?).
  */
 void init_kernel_pagetables(void)
 {
@@ -197,7 +213,7 @@ void init_kernel_pagetables(void)
   vm_addr pa;
 
   pa_bits = L2_TYPE_S | L2_AP_RWK;
-	pa_bits |=  L2_C;  // FIXME: | L2_B | L2_S; 
+	pa_bits |=  L2_C | L2_B;  // FIXME: | L2_B | L2_S; 
 
   for (pa = 0; pa < bootinfo.mem_size; pa += PAGE_SIZE) {
     kernel_pagetables[pa / PAGE_SIZE] = pa | pa_bits;
