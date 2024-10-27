@@ -20,8 +20,8 @@ mkdir -p build/$KERNEL_IFS_DIR/boot
 mkdir -p build/$KERNEL_IFS_DIR/dev
 
 # FIXME: Are these needed?
-mkdir -p build/$KERNEL_IFS_DIR/dev/sda
-mkdir -p build/$KERNEL_IFS_DIR/dev/tty	
+#mkdir -p build/$KERNEL_IFS_DIR/dev/sda
+#mkdir -p build/$KERNEL_IFS_DIR/dev/tty
 
 mkdir -p build/$KERNEL_IFS_DIR/home
 
@@ -34,6 +34,7 @@ mkdir -p build/$KERNEL_IFS_DIR/lib/firmware/dt
 
 cp build/host/boot/sbin/kernel      build/$KERNEL_IFS_DIR/boot/
 cp build/host/sbin/init             build/$KERNEL_IFS_DIR/sbin/
+cp build/host/sbin/tty              build/$KERNEL_IFS_DIR/sbin/
 cp build/host/sbin/aux              build/$KERNEL_IFS_DIR/sbin/
 cp build/host/sbin/sdcard           build/$KERNEL_IFS_DIR/sbin/
 cp build/host/sbin/extfs            build/$KERNEL_IFS_DIR/sbin/
