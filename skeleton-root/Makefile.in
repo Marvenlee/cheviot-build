@@ -588,9 +588,15 @@ install-data-local:
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media/root
 	install -o 0 -g 0 -m 0755 -d $(prefix)/mnt
+	install -o 0 -g 0 -m 0755 -d $(prefix)/opt
+	install -o 0 -g 0 -m 0755 -d $(prefix)/opt/tests
 	install -o 0 -g 0 -m 0700 -d $(prefix)/root 
 	install -o 0 -g 0 -m 0755 -d $(prefix)/sbin
 	install -o 0 -g 0 -m 0755 -d $(prefix)/sys
+	install -o 0 -g 0 -m 0755 -d $(prefix)/system
+	install -o 0 -g 0 -m 0755 -d $(prefix)/system/filesystems
+	install -o 0 -g 0 -m 0755 -d $(prefix)/system/drivers
+	install -o 0 -g 0 -m 0755 -d $(prefix)/system/servers	
 	install -o 0 -g 0 -m 0755 -d $(prefix)/tmp
 	install -o 0 -g 0 -m 0755 -d $(prefix)/usr
 	install -o 0 -g 0 -m 0755 -d $(prefix)/usr/bin

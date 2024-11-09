@@ -63,7 +63,7 @@ void Main(void) {
     boot_panic("Cannot load kernel");
   }
 
-  if (elf_find((void *)ifs_image, rootfs_image_size, "sbin", "ifs",  &ifs_exe_base, &ifs_exe_size) == -1) {
+  if (elf_find((void *)ifs_image, rootfs_image_size, "filesystems", "ifs",  &ifs_exe_base, &ifs_exe_size) == -1) {
     boot_panic("cannot find IFS.exe in IFS image");
   }
 

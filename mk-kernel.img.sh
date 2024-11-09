@@ -18,32 +18,28 @@ mkdir -p build/$KERNEL_IFS_DIR
 mkdir -p build/$KERNEL_IFS_DIR/bin
 mkdir -p build/$KERNEL_IFS_DIR/boot
 mkdir -p build/$KERNEL_IFS_DIR/dev
-
-# FIXME: Are these needed?
-#mkdir -p build/$KERNEL_IFS_DIR/dev/sda
-#mkdir -p build/$KERNEL_IFS_DIR/dev/tty
-
 mkdir -p build/$KERNEL_IFS_DIR/home
-
-# FIXME: Are these needed?
 mkdir -p build/$KERNEL_IFS_DIR/media/root
 mkdir -p build/$KERNEL_IFS_DIR/root
 mkdir -p build/$KERNEL_IFS_DIR/sbin
 mkdir -p build/$KERNEL_IFS_DIR/etc
 mkdir -p build/$KERNEL_IFS_DIR/lib/firmware/dt
+mkdir -p build/$KERNEL_IFS_DIR/system
+mkdir -p build/$KERNEL_IFS_DIR/system/drivers
+mkdir -p build/$KERNEL_IFS_DIR/system/filesystems
 
-cp build/host/boot/sbin/kernel      build/$KERNEL_IFS_DIR/boot/
-cp build/host/sbin/init             build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/tty              build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/aux              build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/sdcard           build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/extfs            build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/ifs              build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/devfs            build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/gpio             build/$KERNEL_IFS_DIR/sbin/
-cp build/host/sbin/mailbox          build/$KERNEL_IFS_DIR/sbin/
-cp build/host/etc/startup.cfg       build/$KERNEL_IFS_DIR/etc/
-cp build/host/lib/firmware/dt/rpi4.dtb       build/$KERNEL_IFS_DIR/lib/firmware/dt
+cp build/host/boot/sbin/kernel                build/$KERNEL_IFS_DIR/boot/
+cp build/host/sbin/init                       build/$KERNEL_IFS_DIR/sbin/
+cp build/host/system/drivers/tty              build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/drivers/aux              build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/drivers/sdcard           build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/drivers/gpio             build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/drivers/mailbox          build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/filesystems/extfs        build/$KERNEL_IFS_DIR/system/filesystems/
+cp build/host/system/filesystems/ifs          build/$KERNEL_IFS_DIR/system/filesystems/
+cp build/host/system/filesystems/devfs        build/$KERNEL_IFS_DIR/system/filesystems/
+cp build/host/etc/startup.cfg                 build/$KERNEL_IFS_DIR/etc/
+cp build/host/lib/firmware/dt/rpi4.dtb        build/$KERNEL_IFS_DIR/lib/firmware/dt/
 	
 arm-none-eabi-objcopy build/host/sbin/bootload -O binary output/bootload.img
 
