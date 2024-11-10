@@ -16,4 +16,8 @@ ExternalProject_Add (
 )
 
 
+add_custom_target(cleantests
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/tests-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/tests-stamp
+)
 

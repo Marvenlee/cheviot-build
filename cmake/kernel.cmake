@@ -14,3 +14,9 @@ ExternalProject_Add (
 	INSTALL_COMMAND   pseudo make install
 )
 
+
+add_custom_target(cleankernel
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/kernel-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/kernel-stamp
+)
+

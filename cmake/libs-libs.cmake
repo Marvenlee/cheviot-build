@@ -19,4 +19,9 @@ ExternalProject_Add (
 )
 
 
+add_custom_target(cleanlibs
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/libs-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/libs-stamp
+)
+
 

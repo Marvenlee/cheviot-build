@@ -15,3 +15,9 @@ ExternalProject_Add (
 	INSTALL_COMMAND   pseudo make install
 )
 
+
+add_custom_target(cleanfilesystems
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/filesystems-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/filesystems-stamp
+)
+

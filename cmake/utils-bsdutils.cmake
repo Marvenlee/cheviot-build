@@ -16,3 +16,9 @@ ExternalProject_Add (
 	INSTALL_COMMAND   pseudo make install
 )
 
+
+add_custom_target(cleanbsdutils
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/bsdutils-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/bsdutils-stamp
+)
+

@@ -16,4 +16,8 @@ ExternalProject_Add (
 )
 
 
+add_custom_target(cleanutils
+  COMMAND           rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/utils-build &&
+                    rm -rf ${CMAKE_CURRENT_BINARY_DIR}/output/src/utils-stamp
+)
 
