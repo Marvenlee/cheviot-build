@@ -7,7 +7,7 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-//#define NDEBUG
+#define NDEBUG
 
 #if !defined(NDEBUG)
 
