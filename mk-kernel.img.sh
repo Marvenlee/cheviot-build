@@ -29,7 +29,7 @@ mkdir -p build/$KERNEL_IFS_DIR/system/drivers
 mkdir -p build/$KERNEL_IFS_DIR/system/filesystems
 
 cp build/host/boot/sbin/kernel                build/$KERNEL_IFS_DIR/boot/
-cp build/host/sbin/init                       build/$KERNEL_IFS_DIR/sbin/
+cp build/host/sbin/sysinit                    build/$KERNEL_IFS_DIR/sbin/
 cp build/host/system/drivers/tty              build/$KERNEL_IFS_DIR/system/drivers/
 cp build/host/system/drivers/aux              build/$KERNEL_IFS_DIR/system/drivers/
 cp build/host/system/drivers/sdcard           build/$KERNEL_IFS_DIR/system/drivers/
