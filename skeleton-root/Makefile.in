@@ -586,12 +586,14 @@ install-data-local:
 	install -o 0 -g 0 -m 0755 -d $(prefix)/lib/firmware
 	install -o 0 -g 0 -m 0755 -d $(prefix)/lib/firmware/dt
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media
+	install -o 0 -g 0 -m 0755 -d $(prefix)/media/boot
 	install -o 0 -g 0 -m 0755 -d $(prefix)/media/root
 	install -o 0 -g 0 -m 0755 -d $(prefix)/mnt
 	install -o 0 -g 0 -m 0755 -d $(prefix)/opt
 	install -o 0 -g 0 -m 0755 -d $(prefix)/opt/tests
 	install -o 0 -g 0 -m 0700 -d $(prefix)/root 
 	install -o 0 -g 0 -m 0755 -d $(prefix)/sbin
+	install -o 0 -g 0 -m 0755 -d $(prefix)/serv
 	install -o 0 -g 0 -m 0755 -d $(prefix)/sys
 	install -o 0 -g 0 -m 0755 -d $(prefix)/system
 	install -o 0 -g 0 -m 0755 -d $(prefix)/system/filesystems

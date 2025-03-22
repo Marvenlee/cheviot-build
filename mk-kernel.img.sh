@@ -18,12 +18,13 @@ mkdir -p build/$KERNEL_IFS_DIR
 mkdir -p build/$KERNEL_IFS_DIR/bin
 mkdir -p build/$KERNEL_IFS_DIR/boot
 mkdir -p build/$KERNEL_IFS_DIR/dev
+mkdir -p build/$KERNEL_IFS_DIR/etc
 mkdir -p build/$KERNEL_IFS_DIR/home
+mkdir -p build/$KERNEL_IFS_DIR/lib/firmware/dt
 mkdir -p build/$KERNEL_IFS_DIR/media/root
 mkdir -p build/$KERNEL_IFS_DIR/root
 mkdir -p build/$KERNEL_IFS_DIR/sbin
-mkdir -p build/$KERNEL_IFS_DIR/etc
-mkdir -p build/$KERNEL_IFS_DIR/lib/firmware/dt
+mkdir -p build/$KERNEL_IFS_DIR/serv
 mkdir -p build/$KERNEL_IFS_DIR/system
 mkdir -p build/$KERNEL_IFS_DIR/system/drivers
 mkdir -p build/$KERNEL_IFS_DIR/system/filesystems
