@@ -40,11 +40,12 @@ cp build/host/system/drivers/mailbox          build/$KERNEL_IFS_DIR/system/drive
 cp build/host/system/filesystems/extfs        build/$KERNEL_IFS_DIR/system/filesystems/
 cp build/host/system/filesystems/ifs          build/$KERNEL_IFS_DIR/system/filesystems/
 cp build/host/system/filesystems/devfs        build/$KERNEL_IFS_DIR/system/filesystems/
-cp build/host/etc/startup.cfg                 build/$KERNEL_IFS_DIR/etc/
+cp build/host/etc/s.startup                   build/$KERNEL_IFS_DIR/etc/
+cp build/host/etc/s.shutdown                  build/$KERNEL_IFS_DIR/etc/
 cp build/host/lib/firmware/dt/rpi4.dtb        build/$KERNEL_IFS_DIR/lib/firmware/dt/
 	
-arm-none-eabi-objcopy build/host/sbin/bootload -O binary output/bootload.img
+arm-none-eabi-objcopy build/host/sbin/bootloader -O binary output/bootloader.img
 
-./output/src/mkifs-build/mkifs build/boot_partition/kernel.img output/bootload.img build/$KERNEL_IFS_DIR
+./output/src/mkifs-build/mkifs build/boot_partition/kernel.img output/bootloader.img build/$KERNEL_IFS_DIR
 
 

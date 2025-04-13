@@ -1,0 +1,9 @@
+#
+#	from: @(#)ttys	5.1 (Berkeley) 4/17/89
+#
+# name		getty		type	status		comments
+#
+
+aux		"/sbin/lgetty"	vt100	on	secure
+
+

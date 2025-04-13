@@ -13,6 +13,7 @@ ExternalProject_Add (
                         --disable-interwork          
 	BUILD_ALWAYS      OFF  
 	INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/native/
+  DEPENDS           fixincludes
 	BUILD_COMMAND     make
 )
 

@@ -16,7 +16,7 @@ ExternalProject_Add (
 	BUILD_ALWAYS      OFF
 	TEST_AFTER_INSTALL 1
 	INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/native/
-  DEPENDS           binutils-native
+  DEPENDS           fixincludes binutils-native
 	BUILD_COMMAND     make all-gcc
 	INSTALL_COMMAND   make install-gcc
 	TEST_COMMAND      make all install

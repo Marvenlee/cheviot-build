@@ -42,7 +42,6 @@ waitfor /dev/tty
 mknod /dev/aux 0777 c
 start /system/drivers/aux -u 0 -g 0 -d 0x0300 -m 0777 /dev/aux
 waitfor /dev/aux
-settty /dev/aux
 
 # Start SD card driver, mount onto /dev/sda* block device nodes
 
@@ -84,25 +83,4 @@ waitfor /dev/random
 # Setup the current directory
 chdir /root
 
-# Print CheviotOS greeting
-printgreeting
-
-# Start the shell (later replace with /usr/bin/login)
-session /bin/ksh -l
-
-# Handle sysinit messages. Continue the script when we receive the shutdown command.
-handlecommands
-
-#termusers
-
-#sync
-
-sleep 1
-
-# Send a command to automount to unmount all services
-#umountall
-
-# sleep 1
-
-shutdown
 

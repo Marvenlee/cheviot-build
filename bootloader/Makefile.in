@@ -86,7 +86,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-sbin_PROGRAMS = bootload$(EXEEXT)
+sbin_PROGRAMS = bootloader$(EXEEXT)
 @BOARD_RASPBERRY_PI_1_TRUE@am__append_1 = boards/raspberry_pi_1/aux_uart.c \
 @BOARD_RASPBERRY_PI_1_TRUE@                boards/raspberry_pi_1/bootstrap.c \
 @BOARD_RASPBERRY_PI_1_TRUE@                boards/raspberry_pi_1/debug.c \
@@ -117,7 +117,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(sbindir)"
 PROGRAMS = $(sbin_PROGRAMS)
-am__bootload_SOURCES_DIST = doprintf.c elf.c globals.c main.c \
+am__bootloader_SOURCES_DIST = doprintf.c elf.c globals.c main.c \
 	boards/raspberry_pi_1/aux_uart.c \
 	boards/raspberry_pi_1/bootstrap.c \
 	boards/raspberry_pi_1/debug.c boards/raspberry_pi_1/gpio.c \
@@ -142,12 +142,12 @@ am__dirstamp = $(am__leading_dot)dirstamp
 @BOARD_RASPBERRY_PI_4_TRUE@	boards/raspberry_pi_4/gpio.$(OBJEXT) \
 @BOARD_RASPBERRY_PI_4_TRUE@	boards/raspberry_pi_4/init.$(OBJEXT) \
 @BOARD_RASPBERRY_PI_4_TRUE@	boards/raspberry_pi_4/start.$(OBJEXT)
-am_bootload_OBJECTS = doprintf.$(OBJEXT) elf.$(OBJEXT) \
+am_bootloader_OBJECTS = doprintf.$(OBJEXT) elf.$(OBJEXT) \
 	globals.$(OBJEXT) main.$(OBJEXT) $(am__objects_1) \
 	$(am__objects_2)
-bootload_OBJECTS = $(am_bootload_OBJECTS)
-bootload_DEPENDENCIES =
-bootload_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(bootload_LDFLAGS) \
+bootloader_OBJECTS = $(am_bootloader_OBJECTS)
+bootloader_DEPENDENCIES =
+bootloader_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(bootloader_LDFLAGS) \
 	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -199,8 +199,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(bootload_SOURCES)
-DIST_SOURCES = $(am__bootload_SOURCES_DIST)
+SOURCES = $(bootloader_SOURCES)
+DIST_SOURCES = $(am__bootloader_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -337,22 +337,22 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-bootload_SOURCES = doprintf.c elf.c globals.c main.c $(am__append_1) \
+bootloader_SOURCES = doprintf.c elf.c globals.c main.c $(am__append_1) \
 	$(am__append_2)
-@BOARD_RASPBERRY_PI_1_TRUE@bootload_LDADD = -lrpimailbox -lrpihal
-@BOARD_RASPBERRY_PI_4_TRUE@bootload_LDADD = -lrpimailbox -lrpihal
+@BOARD_RASPBERRY_PI_1_TRUE@bootloader_LDADD = -lrpimailbox -lrpihal
+@BOARD_RASPBERRY_PI_4_TRUE@bootloader_LDADD = -lrpimailbox -lrpihal
 @BOARD_RASPBERRY_PI_1_TRUE@AM_CFLAGS = -O2 -std=c99 -g0
 @BOARD_RASPBERRY_PI_4_TRUE@AM_CFLAGS = -mcpu=cortex-a72 -mfpu=vfpv3-d16 -O0 -std=c99 -g2
 @BOARD_RASPBERRY_PI_1_TRUE@AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_1 -DBOARD_RASPBERRY_PI_1
 @BOARD_RASPBERRY_PI_4_TRUE@AM_CPPFLAGS = -I$(srcdir)/boards/raspberry_pi_4 -DBOARD_RASPBERRY_PI_4
 @BOARD_RASPBERRY_PI_1_TRUE@AM_CCASFLAGS = -r -I$(srcdir)/boards/raspberry_pi_1 -DBOARD_RASPBERRY_PI_1
 @BOARD_RASPBERRY_PI_4_TRUE@AM_CCASFLAGS = -mcpu=cortex-a72 -mfpu=vfpv3-d16 -r -I$(srcdir)/boards/raspberry_pi_4 -DBOARD_RASPBERRY_PI_4
-@BOARD_RASPBERRY_PI_1_TRUE@bootload_LDFLAGS = -v \
+@BOARD_RASPBERRY_PI_1_TRUE@bootloader_LDFLAGS = -v \
 @BOARD_RASPBERRY_PI_1_TRUE@               -nostartfiles \
 @BOARD_RASPBERRY_PI_1_TRUE@               -lgcc \
 @BOARD_RASPBERRY_PI_1_TRUE@               -T $(srcdir)/boards/raspberry_pi_1/linker.ls
 
-@BOARD_RASPBERRY_PI_4_TRUE@bootload_LDFLAGS = -v \
+@BOARD_RASPBERRY_PI_4_TRUE@bootloader_LDFLAGS = -v \
 @BOARD_RASPBERRY_PI_4_TRUE@               -nostartfiles \
 @BOARD_RASPBERRY_PI_4_TRUE@               -lgcc \
 @BOARD_RASPBERRY_PI_4_TRUE@               -T $(srcdir)/boards/raspberry_pi_4/linker.ls
@@ -491,9 +491,9 @@ boards/raspberry_pi_4/start.$(OBJEXT):  \
 	boards/raspberry_pi_4/$(am__dirstamp) \
 	boards/raspberry_pi_4/$(DEPDIR)/$(am__dirstamp)
 
-bootload$(EXEEXT): $(bootload_OBJECTS) $(bootload_DEPENDENCIES) $(EXTRA_bootload_DEPENDENCIES) 
-	@rm -f bootload$(EXEEXT)
-	$(AM_V_CCLD)$(bootload_LINK) $(bootload_OBJECTS) $(bootload_LDADD) $(LIBS)
+bootloader$(EXEEXT): $(bootloader_OBJECTS) $(bootloader_DEPENDENCIES) $(EXTRA_bootloader_DEPENDENCIES) 
+	@rm -f bootloader$(EXEEXT)
+	$(AM_V_CCLD)$(bootloader_LINK) $(bootloader_OBJECTS) $(bootloader_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

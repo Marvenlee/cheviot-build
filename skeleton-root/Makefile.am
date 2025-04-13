@@ -45,8 +45,10 @@ install-data-local:
 					$(srcdir)/root/lib/firmware/dt/rpi4.dtb
 	install -o 0 -g 0 -m 0755 -t $(prefix)/etc/ \
 					$(srcdir)/root/etc/profile \
-					$(srcdir)/root/etc/startup.cfg \
-					$(srcdir)/root/etc/termcap
+					$(srcdir)/root/etc/s.startup \
+					$(srcdir)/root/etc/s.shutdown \
+					$(srcdir)/root/etc/termcap \
+					$(srcdir)/root/etc/ttys
 															
 
 

@@ -1,0 +1,16 @@
+#
+# startup.cfg for Raspberry Pi
+
+sync
+
+# Unmount all except for root FS.  (read fstab, unmount partitions?)
+unmountall
+
+# Send command to make root FS write only.
+
+chmod -w /
+
+sleep 1
+
+
+

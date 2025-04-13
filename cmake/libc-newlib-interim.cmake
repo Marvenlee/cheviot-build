@@ -24,7 +24,7 @@ ExternalProject_Add (
 	                    --enable-interwork --enable-multilib
 	                    CFLAGS_FOR_TARGET=${CFLAGS_FOR_RPI}
   BUILD_ALWAYS      ON
-  DEPENDS           gcc-native-install binutils-native skeleton-root
+  DEPENDS           fixincludes gcc-native-install binutils-native skeleton-root
   INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/native/
   BUILD_COMMAND     make
   INSTALL_COMMAND   make install
