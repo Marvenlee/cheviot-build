@@ -7,7 +7,19 @@
 #include <stddef.h>
 #include <stdarg.h>
 
+
+// Enable debug logging, comment to remove logging
 #define NDEBUG
+
+
+/*
+ * Prototypes
+ */
+void boot_debug_init(void);
+void boot_debug_printf(const char *format, ...);
+void boot_panic(char *string);
+void boot_debug_write_string(char *string);
+
 
 #if !defined(NDEBUG)
 
@@ -46,15 +58,6 @@
 #define LOG_LEVEL_ERROR
 #endif
 
-
-/*
- * Prototypes
- */
-void boot_debug_init(void);
-void boot_debug_printf(const char *format, ...);
-void boot_panic(char *string);
-void boot_debug_write_string(char *string);
-;
 
 /*
  *

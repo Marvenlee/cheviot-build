@@ -20,16 +20,15 @@ waitfor /serv
 
 # Start the GPIO and Mailbox drivers
 
-mknod /dev/gpio 0777 c
-mknod /dev/mailbox 0777 c
 mknod /serv/sysinit 0777 c
-
 createport
 
+mknod /dev/gpio 0777 c
 start /system/drivers/gpio -u 0 -g 0 -d 0x0200 -m 0777 /dev/gpio
-start /system/drivers/mailbox -u 0 -g 0 -d 0x0100 -m 0777 /dev/mailbox
-
 waitfor /dev/gpio
+
+mknod /dev/mailbox 0777 c
+start /system/drivers/mailbox -u 0 -g 0 -d 0x0100 -m 0777 /dev/mailbox
 waitfor /dev/mailbox
 
 # Start the serial port driver and mount as /dev/tty  dev_t = 0x0500
