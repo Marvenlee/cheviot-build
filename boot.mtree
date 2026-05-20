@@ -1,0 +1,6 @@
+. type=dir
+kernel.img type=file
+start4.elf type=file
+config.txt type=file
+fixup4.dat type=file
+

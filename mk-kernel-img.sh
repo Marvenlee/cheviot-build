@@ -37,6 +37,7 @@ cp build/host/system/drivers/aux              build/$KERNEL_IFS_DIR/system/drive
 cp build/host/system/drivers/sdcard           build/$KERNEL_IFS_DIR/system/drivers/
 cp build/host/system/drivers/gpio             build/$KERNEL_IFS_DIR/system/drivers/
 cp build/host/system/drivers/mailbox          build/$KERNEL_IFS_DIR/system/drivers/
+cp build/host/system/filesystems/ufs        build/$KERNEL_IFS_DIR/system/filesystems/
 cp build/host/system/filesystems/extfs        build/$KERNEL_IFS_DIR/system/filesystems/
 cp build/host/system/filesystems/ifs          build/$KERNEL_IFS_DIR/system/filesystems/
 cp build/host/system/filesystems/devfs        build/$KERNEL_IFS_DIR/system/filesystems/
@@ -46,6 +47,48 @@ cp build/host/lib/firmware/dt/rpi4.dtb        build/$KERNEL_IFS_DIR/lib/firmware
 	
 arm-none-eabi-objcopy build/host/sbin/bootloader -O binary output/bootloader.img
 
-./output/src/mkifs-build/mkifs build/boot_partition/kernel.img output/bootloader.img build/$KERNEL_IFS_DIR
+
+echo "creating ifs.mtree."
+
+# TODO: ifs.mtree handling currently not supported by mkifs
+
+cat >ifs.mtree <<EOF
+/set type=file uid=0 gid=0 mode=0644
+. type=dir mode=0755
+./bin type=dir mode=0755
+./boot type=dir mode=0755
+./boot/sbin type=dir mode=0755
+./boot/sbin/kernel type=file
+./dev type=dir mode=0755
+./etc type=dir mode=0755
+./etc/s.startup type=file
+./etc/s.shutdown type=file
+./home type=dir mode=0755
+./lib type=dir mode=0755
+./lib/firmware type=dir mode=0755
+./lib/firmware/dt type=dir mode=0755
+./lib/firmware/dt/rpi4.dtb type=file
+./media type=dir mode=0755
+./media/root type=dir mode=0755
+./root type=dir mode=0755
+./sbin type=dir mode=0755
+./serv type=dir mode=0755
+./system type=dir mode=0755
+./system/drivers type=dir mode=0755
+./system/drivers/tty type=file
+./system/drivers/aux type=file
+./system/drivers/sdcard type=file
+./system/drivers/gpio type=file
+./system/drivers/mailbox type=file
+./system/filesystems type=dir mode=0755
+./system/filesystems/ufs type=file
+./system/filesystems/extfs type=file
+./system/filesystems/ifs type=file
+./system/filesystems/devfs type=file
+./system/servers type=dir mode=0755
+./system/servers/sysinit type=file
+EOF
+
+./output/src/mkifs-build/mkifs build/boot_partition/kernel.img output/bootloader.img ifs.mtree build/$KERNEL_IFS_DIR
 
 

@@ -1,0 +1,37 @@
+
+cat >ifs.mtree <<EOF
+/set type=file uid=0 gid=0 mode=0644
+. type=dir mode=0755
+./bin type=dir mode=0755
+./boot type=dir mode=0755
+./boot/sbin type=dir mode=0755
+./boot/sbin/kernel type=file
+./dev type=dir mode=0755
+./etc type=dir mode=0755
+./etc/s.startup type=file
+./etc/s.shutdown type=file
+./home type=dir mode=0755
+./lib type=dir mode=0755
+./lib/firmware type=dir mode=0755
+./lib/firmware/dt type=dir mode=0755
+./lib/firmware/dt/rpi4.dtb type=file
+./media type=dir mode=0755
+./media/root type=dir mode=0755
+./root type=dir mode=0755
+./sbin type=dir mode=0755
+./serv type=dir mode=0755
+./system type=dir mode=0755
+./system/drivers type=dir mode=0755
+./system/drivers/tty type=file
+./system/drivers/aux type=file
+./system/drivers/sdcard type=file
+./system/drivers/gpio type=file
+./system/drivers/mailbox type=file
+./system/filesystems type=dir mode=0755
+./system/filesystems/extfs type=file
+./system/filesystems/ifs type=file
+./system/filesystems/devfs type=file
+./system/servers type=dir mode=0755
+./system/servers/sysinit type=file
+EOF
+

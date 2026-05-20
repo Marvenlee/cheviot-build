@@ -46,7 +46,7 @@ int32_t current_inode_nr;
 
 // Prototypes
 void WriteBootloader(char *bootloader);
-void WriteIFS(char *path_prefix);
+void WriteIFS(char *mtree_path, char *path_prefix);
 void Recursive(DIR *dir, struct IFSNodeContainer *parent);
 void WriteFileTable(void);
 int WriteBootloaderHeader(void);
@@ -64,18 +64,19 @@ int WriteFileContents(void);
  *
  */
 int main(int argc, char *argv[]) {
-  if (argc != 4) {
+  if (argc != 5) {
     printf("Usage: mkifs output_file bootloader_file ifs_dir\n");
     return -1;
   }
 
   printf("output     : %s\n", argv[1]);
   printf("bootloader : %s\n", argv[2]);
-  printf("root dir   : %s\n", argv[3]);
+  printf("mtree      : %s\n", argv[3]);
+  printf("root dir   : %s\n", argv[4]);
   output_fd = open(argv[1], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 
   WriteBootloader(argv[2]);
-  WriteIFS(argv[3]);
+  WriteIFS(argv[3], argv[4]);
 
   close(output_fd);
 }
@@ -119,7 +120,7 @@ void WriteBootloader(char *bootloader) {
 /**
  *
  */
-void WriteIFS(char *path_prefix) {
+void WriteIFS(char *mtree_path, char *path_prefix) {
   struct IFSNodeContainer *node;
   DIR *root_dir;
 
@@ -128,6 +129,10 @@ void WriteIFS(char *path_prefix) {
   root_dir = opendir(path_prefix);
   node = malloc(sizeof *node);
 
+  // TODO: Open mtree, read all entries into table.
+  // Handle "set" for default options
+  // For each file we read, find entry in mtree table
+  
 
   // Do we need this when Recursive() will create "." ?   (But it points here)
   strcpy(node->real_path, path_prefix);

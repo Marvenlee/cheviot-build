@@ -49,10 +49,10 @@ start /system/drivers/sdcard -u 0 -g 0 -d 0x0400 -m 0777 /dev/sda
 waitfor /dev/sda
 waitfor /dev/sda2
 
-# Mount the second partition on SD Card at /media/root as an extfs partition 
+# Mount the second partition on SD Card at /media/root as a UFS-FFS partition 
 # The /media/root directory already exists in the IFS image.
 
-start /system/filesystems/extfs -u 0 -g 0 -m 0777 /media/root /dev/sda2
+start /system/filesystems/ufs -u 0 -g 0 -m 0777 /media/root /dev/sda2
 waitfor /media/root
 
 # Pivot the filesystems
@@ -66,20 +66,23 @@ renamemount /serv /media/boot/serv
 # Start other services from root partition
 
 mknod /dev/null 0777 c
-mknod /dev/random 0777 c
+# mknod /dev/random 0777 c
 # mknod /serv/sysinfo 0777 c
 # mknod /serv/echo 0777 c
 
 start /system/drivers/null -u 0 -g 0 -d 0x0501 -m 0777 /dev/null
-start /system/drivers/random -u 0 -g 0 -d 0x0502 -m 0777 /dev/random
+
+# start /system/drivers/random -u 0 -g 0 -d 0x0502 -m 0777 /dev/random
 # start /system/drivers/sysinfo -u 0 -g 0 -d 0x0700 -m 0777 /serv/sysinfo
 # start /system/drivers/echo -u 0 -g 0 -d 0x0800 -m 0777 /serv/echo
 
+# sleep 30
+
 waitfor /dev/null
-waitfor /dev/random
+#waitfor /dev/random
 # waitfor /serv/sysinfo
 
 # Setup the current directory
-chdir /root
+chdir /
 
 

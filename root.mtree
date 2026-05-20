@@ -1,0 +1,167 @@
+/set type=file uid=0 gid=0 mode=0744
+.                         type=dir mode=0755 uid=0 gid=0
+./sbin                    type=dir mode=0755 uid=0 gid=0
+./sbin/getty
+./sbin/pwd_mkdb
+./sbin/shutdown
+./sbin/login
+./sbin/setgpio
+./sbin/bootloader
+./sbin/lgetty
+./sbin/logname
+./serv                    type=dir mode=0755 uid=0 gid=0
+./usr                     type=dir mode=0755 uid=0 gid=0
+./usr/sbin                type=dir mode=0755 uid=0 gid=0
+./usr/bin                 type=dir mode=0755 uid=0 gid=0
+./usr/lib                 type=dir mode=0755 uid=0 gid=0
+./tmp                     type=dir mode=0755 uid=0 gid=0
+./root                    type=dir mode=0755 uid=0 gid=0
+./home                    type=dir mode=0755 uid=0 gid=0
+./sys                     type=dir mode=0755 uid=0 gid=0
+./etc                     type=dir mode=0755 uid=0 gid=0
+./etc/s.shutdown
+./etc/profile
+./etc/ttys
+./etc/termcap
+./etc/opt                 type=dir mode=0755 uid=0 gid=0
+./etc/s.startup
+./dev                     type=dir mode=0755 uid=0 gid=0
+./bin                     type=dir mode=0755 uid=0 gid=0
+./bin/pr
+./bin/paste
+./bin/df
+./bin/install
+./bin/true
+./bin/join
+./bin/mkfifo
+./bin/expr
+./bin/factor
+./bin/rmdir
+./bin/dir
+./bin/link
+./bin/du
+./bin/tail
+./bin/uname
+./bin/echo
+./bin/chmod
+./bin/basename
+./bin/kill
+./bin/chown
+./bin/mknod
+./bin/pinky
+./bin/stat
+./bin/cksum
+./bin/csplit
+./bin/nl
+./bin/expand
+./bin/dd
+./bin/dircolors
+./bin/mv
+./bin/seq
+./bin/stty
+./bin/date
+./bin/sleep
+./bin/chroot
+./bin/chgrp
+./bin/hostname
+./bin/nice
+./bin/tac
+./bin/nohup
+./bin/sha1sum
+./bin/comm
+./bin/shred
+./bin/md5sum
+./bin/sort
+./bin/ls
+./bin/split
+./bin/yes
+./bin/false
+./bin/unexpand
+./bin/uptime
+./bin/cut
+./bin/ptx
+./bin/pwd
+./bin/cp
+./bin/sum
+./bin/fmt
+./bin/whoami
+./bin/uniq
+./bin/mkdir
+./bin/users
+./bin/env
+./bin/test
+./bin/tsort
+./bin/printf
+./bin/dumpkerneltables
+./bin/head
+./bin/top
+./bin/sync
+./bin/su
+./bin/ln
+./bin/rm
+./bin/tty
+./bin/ksh
+./bin/cat
+./bin/pathchk
+./bin/readlink
+./bin/dirname
+./bin/tee
+./bin/[
+./bin/unlink
+./bin/groups
+./bin/who
+./bin/od
+./bin/logname
+./bin/printenv
+./bin/hexdump
+./bin/vdir
+./bin/id
+./bin/fold
+./bin/touch
+./bin/wc
+./bin/tr
+./bin/say
+./system                        type=dir mode=0755 uid=0 gid=0
+./system/servers                type=dir mode=0755 uid=0 gid=0
+./system/servers/nettcpip
+./system/servers/syslog
+./system/servers/sysinit
+./system/servers/sysinfo
+./system/servers/automount
+./system/filesystems            type=dir mode=0755 uid=0 gid=0
+./system/filesystems/devfs
+./system/filesystems/ifs
+./system/filesystems/extfs
+./system/filesystems/ufs
+./system/drivers                type=dir mode=0755 uid=0 gid=0
+./system/drivers/gpio
+./system/drivers/random
+./system/drivers/sdcard
+./system/drivers/null
+./system/drivers/mailbox
+./system/drivers/tty
+./system/drivers/aux
+./system/drivers/genet
+./media                         type=dir mode=0755 uid=0 gid=0
+./media/root                    type=dir mode=0755 uid=0 gid=0
+./media/boot                    type=dir mode=0755 uid=0 gid=0
+./lib                           type=dir mode=0755 uid=0 gid=0
+./lib/firmware                  type=dir mode=0755 uid=0 gid=0
+./lib/firmware/dt               type=dir mode=0755 uid=0 gid=0
+./lib/firmware/dt/rpi4.dtb
+./lib/charset.alias
+./opt                           type=dir mode=0755 uid=0 gid=0
+./opt/tests                     type=dir mode=0755 uid=0 gid=0
+./opt/tests/readdir             
+./opt/tests/readfile
+./opt/tests/chartest
+./opt/tests/threadtest
+./opt/tests/clock
+./var                           type=dir mode=0755 uid=0 gid=0
+./var/log                       type=dir mode=0755 uid=0 gid=0
+./mnt                           type=dir mode=0755 uid=0 gid=0
+./boot                          type=dir mode=0755 uid=0 gid=0
+./boot/sbin                     type=dir mode=0755 uid=0 gid=0
+./boot/sbin/kernel
+
+
