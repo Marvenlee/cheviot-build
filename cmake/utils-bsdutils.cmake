@@ -13,7 +13,7 @@ ExternalProject_Add (
 	INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/host
 	DEPENDS           newlib hal libs bsdlibs 
 	BUILD_COMMAND     make
-	INSTALL_COMMAND   pseudo make install
+	INSTALL_COMMAND   make install
 )
 
 

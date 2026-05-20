@@ -11,7 +11,7 @@ ExternalProject_Add (
 	BUILD_ALWAYS      OFF
 	INSTALL_DIR       ${CMAKE_CURRENT_BINARY_DIR}/build/host/
 	DEPENDS           
-	INSTALL_COMMAND   pseudo make install
+	INSTALL_COMMAND   make install
 )
 
 
