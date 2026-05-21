@@ -33,7 +33,12 @@ skip_magic:
     
   // Switch on the FP and NEON hardware.
   mov r1, #0x1 << 30
+
+#if 0
   vmsr fpexc, r1
+#else
+  .word 0xeee81a10                    // 8030:	eee81a10 	vmsr	fpexc, r1
+#endif
 
   // TODO: We may need to configure NSACR and HCPTR.
   //	  mrc p15, 0, r1, c1, c1, 2   // NSACR
@@ -48,8 +53,15 @@ skip_magic:
   msr spsr_cxsf,r0
 
   add r0,pc,#4
+
+#if 0
   msr ELR_hyp,r0
   eret
+#else
+ .word 0xe12ef300                     // 8048:	e12ef300 	msr	ELR_hyp, r0
+ .word 0xe160006e                     // 804c:	e160006e 	eret
+#endif
+
 
   orr r0,r0,#0x1
 
